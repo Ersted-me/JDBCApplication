@@ -1,7 +1,5 @@
 package com.ersted.model;
 
-import liquibase.repackaged.org.apache.commons.lang3.ObjectUtils;
-
 public class Specialty extends BaseEntity {
     protected String specialty;
 
