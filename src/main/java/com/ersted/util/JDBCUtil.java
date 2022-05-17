@@ -1,8 +1,6 @@
 package com.ersted.util;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class JDBCUtil {
     private static final String URL_PROPERTY = "db.url";
@@ -10,9 +8,14 @@ public class JDBCUtil {
     private static final String PASSWORD_PROPERTY = "db.password";
     private static final String DRIVER_PROPERTY = "db.driver";
 
+    private static final Connection CONNECTION;
+
+    static {
+        CONNECTION = getConnectionToDataBase();
+    }
 
     public static Connection getConnection(){
-        return getConnectionToDataBase();
+        return CONNECTION;
     }
 
     private static Connection getConnectionToDataBase() {
@@ -32,5 +35,25 @@ public class JDBCUtil {
         }
 
         return connection;
+    }
+
+    public static Statement getStatement(){
+        Statement statement;
+        try {
+            statement = CONNECTION.createStatement();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return statement;
+    }
+
+    public static PreparedStatement getPreparedStatement(String SQL){
+        PreparedStatement statement;
+        try {
+            statement = CONNECTION.prepareStatement(SQL);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return statement;
     }
 }
