@@ -17,6 +17,7 @@
     <mysql.version>8.0.29</mysql.version>
     <liquibase.version>4.10.0</liquibase.version>
 
+    <profile.propertyFile>src/main/resources/liquibase.properties</profile.propertyFile>
   </properties>
 
   <dependencies>
@@ -40,4 +41,16 @@
     </dependency>
   </dependencies>
 
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.liquibase</groupId>
+        <artifactId>liquibase-maven-plugin</artifactId>
+        <version>${liquibase.version}</version>
+        <configuration>
+          <propertyFile>${profile.propertyFile}</propertyFile>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
