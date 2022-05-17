@@ -3,9 +3,11 @@ package com.ersted.model;
 public class Specialty extends BaseEntity {
     protected String specialty;
 
-    public Specialty(Long id, String specialty) {
-        super(id);
+    public Specialty(String specialty) {
         this.specialty = specialty;
+    }
+
+    public Specialty() {
     }
 
     public String getSpecialty() {

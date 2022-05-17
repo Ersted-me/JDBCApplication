@@ -8,8 +8,7 @@ public class Developer extends BaseEntity{
     protected List<Skill> skills;
     protected Specialty specialty;
 
-    public Developer(Long id, String firstName, String lastName, List<Skill> skills, Specialty specialty) {
-        super(id);
+    public Developer(String firstName, String lastName, List<Skill> skills, Specialty specialty) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.skills = skills;

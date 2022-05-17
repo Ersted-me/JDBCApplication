@@ -3,9 +3,11 @@ package com.ersted.model;
 public class Skill extends BaseEntity {
     protected String skill;
 
-    public Skill(Long id, String skill) {
-        super(id);
+    public Skill(String skill) {
         this.skill = skill;
+    }
+
+    public Skill() {
     }
 
     public String getSkill() {
