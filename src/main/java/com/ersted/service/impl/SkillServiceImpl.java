@@ -53,7 +53,7 @@ public class SkillServiceImpl implements SkillService {
         Skill newSkill = getSkill(skill.getSkill());
 
         if (newSkill != null) {
-            return newSkill;
+            return null;
         }
 
         try (PreparedStatement statement = JDBCUtil.getPreparedStatement(UPDATE_SQL)) {
