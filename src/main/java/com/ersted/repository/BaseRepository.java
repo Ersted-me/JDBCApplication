@@ -1,8 +1,8 @@
-package com.ersted.service;
+package com.ersted.repository;
 
 import java.util.List;
 
-public interface BaseService<T, R> {
+public interface BaseRepository<T, R> {
     T create(T t);
 
     T getById(R id);

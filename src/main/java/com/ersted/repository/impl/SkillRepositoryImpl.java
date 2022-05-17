@@ -1,7 +1,7 @@
-package com.ersted.service.impl;
+package com.ersted.repository.impl;
 
 import com.ersted.model.Skill;
-import com.ersted.service.SkillService;
+import com.ersted.repository.SkillRepository;
 import com.ersted.util.JDBCUtil;
 
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SkillServiceImpl implements SkillService {
+public class SkillRepositoryImpl implements SkillRepository {
     private final String CREATE_SQL = "INSERT INTO skill(name) VALUES (?);";
 
     private final String UPDATE_SQL = "UPDATE skill SET name = ? WHERE id = ?";
