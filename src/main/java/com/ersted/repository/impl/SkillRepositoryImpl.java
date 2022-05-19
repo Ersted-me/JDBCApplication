@@ -92,9 +92,9 @@ public class SkillRepositoryImpl implements SkillRepository {
             ResultSet resultSet = statement.executeQuery(GET_ALL);
 
             while (resultSet.next()) {
-                Skill skill = new Skill();
-                skill.setId(resultSet.getLong("id"));
-                skill.setSkill(resultSet.getString("name"));
+                Skill skill = new Skill(
+                        resultSet.getLong("id"),
+                        resultSet.getString("name"));
                 skills.add(skill);
             }
 
@@ -143,9 +143,9 @@ public class SkillRepositoryImpl implements SkillRepository {
     private Skill buildSkill(ResultSet resultSet) throws SQLException {
         Skill skill = null;
         if (resultSet.next()) {
-            skill = new Skill();
-            skill.setId(resultSet.getLong("id"));
-            skill.setSkill(resultSet.getString("name"));
+            skill = new Skill(
+                    resultSet.getLong("id"),
+                    resultSet.getString("name"));
         }
 
         return skill;
