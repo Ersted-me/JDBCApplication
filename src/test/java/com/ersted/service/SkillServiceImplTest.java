@@ -4,7 +4,7 @@ import com.ersted.exception.AlreadyExistException;
 import com.ersted.exception.NotFoundException;
 import com.ersted.model.Skill;
 import com.ersted.repository.SkillRepository;
-import com.ersted.service.Impl.SkillServiceImpl;
+import com.ersted.service.impl.SkillServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
