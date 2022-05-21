@@ -1,9 +1,10 @@
-package com.ersted.service;
+package com.ersted.service.impl;
 
-import com.ersted.exception.SkillAlreadyExistException;
-import com.ersted.exception.SkillNotFoundException;
+import com.ersted.exception.AlreadyExistException;
+import com.ersted.exception.NotFoundException;
 import com.ersted.model.Skill;
 import com.ersted.repository.SkillRepository;
+import com.ersted.service.SkillService;
 
 import java.util.List;
 
@@ -15,37 +16,39 @@ public class SkillServiceImpl implements SkillService {
     }
 
     @Override
-    public Skill create(Skill skill) {
+    public Skill create(Skill skill){
         return repository.create(skill);
     }
 
     @Override
-    public Skill getById(Long id) throws SkillNotFoundException {
+    public Skill getById(Long id) throws NotFoundException {
         Skill skill = repository.getById(id);
 
         if (skill == null) {
-            throw new SkillNotFoundException("Skill not found by ID: " + id);
+            throw new NotFoundException("Skill not found by ID: " + id);
         }
 
         return repository.getById(id);
     }
 
     @Override
-    public Skill getByName(String name) throws SkillNotFoundException {
+    public Skill getByName(String name) throws NotFoundException {
         Skill skill = repository.getByName(name);
 
         if(skill == null)
-            throw new SkillNotFoundException("Skill with name: " + name + " not found.");
+            throw new NotFoundException(
+                    String.format("Skill with name: %s not found.", name));
 
         return skill;
     }
 
     @Override
-    public Skill update(Skill skill) throws SkillAlreadyExistException {
+    public Skill update(Skill skill) throws AlreadyExistException {
         Skill updatedSkill = repository.update(skill);
 
         if(updatedSkill == null)
-            throw new SkillAlreadyExistException("Skill with name: " + skill.getSkill() + "already exists");
+            throw new AlreadyExistException(
+                    String.format("Skill with name: %s already exists", skill.getSkill()));
 
         return updatedSkill;
     }
