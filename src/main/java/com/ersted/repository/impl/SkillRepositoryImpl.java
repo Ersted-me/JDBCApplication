@@ -50,26 +50,27 @@ public class SkillRepositoryImpl implements SkillRepository {
 
     @Override
     public Skill update(Skill skill) {
-        Skill newSkill = getSkill(skill.getSkill());
+        Skill oldSkill = getSkill(skill.getSkill());
 
-        if (newSkill != null) {
+        if (oldSkill != null) {
             return null;
         }
+
+        oldSkill = getById(skill.getId());
 
         try (PreparedStatement statement = JDBCUtil.getPreparedStatement(UPDATE_SQL)) {
 
             statement.setString(1, skill.getSkill());
-            statement.setLong(2, skill.getId());
-            statement.executeQuery();
+            statement.setLong(2, oldSkill.getId());
+            statement.executeUpdate();
 
-
-            newSkill = getSkill(skill.getSkill());
+            oldSkill = getSkill(skill.getSkill());
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return newSkill;
+        return oldSkill;
     }
 
     @Override
