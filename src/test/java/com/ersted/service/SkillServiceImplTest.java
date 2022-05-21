@@ -1,7 +1,7 @@
 package com.ersted.service;
 
-import com.ersted.exception.SkillAlreadyExistException;
-import com.ersted.exception.SkillNotFoundException;
+import com.ersted.exception.AlreadyExistException;
+import com.ersted.exception.NotFoundException;
 import com.ersted.model.Skill;
 import com.ersted.repository.SkillRepository;
 import com.ersted.service.Impl.SkillServiceImpl;
@@ -61,15 +61,15 @@ public class SkillServiceImplTest {
         Skill actual = null;
         try {
             actual = skillServiceImpl.getById(1L);
-        } catch (SkillNotFoundException e) {
+        } catch (NotFoundException e) {
             fail("expected: " + expected);
         }
 
         assertEquals(expected, actual);
     }
 
-    @Test(expected = SkillNotFoundException.class)
-    public void whenSkillNotExistById1ThenTrowException() throws SkillNotFoundException {
+    @Test(expected = NotFoundException.class)
+    public void whenSkillNotExistById1ThenTrowException() throws NotFoundException {
         when(repository.getById(any())).thenReturn(null);
         skillServiceImpl.getById(1L);
     }
@@ -83,14 +83,14 @@ public class SkillServiceImplTest {
         Skill actual = null;
         try {
             actual = skillServiceImpl.update(skill);
-        } catch (SkillAlreadyExistException e) {
+        } catch (AlreadyExistException e) {
             fail("expected: " + expected);
         }
         assertEquals(expected, actual);
     }
 
-    @Test(expected = SkillAlreadyExistException.class)
-    public void whenSkillNameAlreadyExistThenThrowException() throws SkillAlreadyExistException {
+    @Test(expected = AlreadyExistException.class)
+    public void whenSkillNameAlreadyExistThenThrowException() throws AlreadyExistException {
         when(repository.update(any())).thenReturn(null);
         Skill skill = new Skill(1L, "test");
         skillServiceImpl.update(skill);
