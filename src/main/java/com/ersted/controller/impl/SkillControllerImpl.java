@@ -1,5 +1,6 @@
-package com.ersted.controller;
+package com.ersted.controller.impl;
 
+import com.ersted.controller.SkillController;
 import com.ersted.exception.AlreadyExistException;
 import com.ersted.exception.NotFoundException;
 import com.ersted.model.Skill;

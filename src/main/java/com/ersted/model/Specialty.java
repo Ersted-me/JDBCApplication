@@ -7,6 +7,11 @@ public class Specialty extends BaseEntity {
         this.specialty = specialty;
     }
 
+    public Specialty(Long id, String specialty) {
+        this.id = id;
+        this.specialty = specialty;
+    }
+
     public Specialty() {
     }
 
