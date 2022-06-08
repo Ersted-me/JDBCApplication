@@ -1,4 +1,4 @@
-package com.ersted.service;
+package com.ersted.service.impl;
 
 import com.ersted.exception.AlreadyExistException;
 import com.ersted.exception.NotFoundException;
@@ -29,7 +29,7 @@ public class SkillServiceImplTest {
     }
 
     @Test
-    public void whenCreateUserWithoutIdThenReturnWithId(){
+    public void whenCreateSkillWithoutIdThenReturnWithId(){
         Skill skill = new Skill("test");
         Skill expected = new Skill(1L, "test");
 
