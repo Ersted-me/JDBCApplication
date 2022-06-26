@@ -50,6 +50,10 @@ public class JDBCUtil {
     public static PreparedStatement getPreparedStatement(String SQL){
         PreparedStatement statement;
         try {
+
+            if(CONNECTION.isClosed())
+                return getConnectionToDataBase().prepareStatement(SQL);
+
             statement = CONNECTION.prepareStatement(SQL);
         } catch (SQLException e) {
             throw new RuntimeException(e);
