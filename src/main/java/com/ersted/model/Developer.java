@@ -7,12 +7,21 @@ public class Developer extends BaseEntity{
     protected String lastName;
     protected List<Skill> skills;
     protected Specialty specialty;
+    protected Status status;
 
-    public Developer(String firstName, String lastName, List<Skill> skills, Specialty specialty) {
+    public Developer(Long id,
+                     String firstName,
+                     String lastName,
+                     List<Skill> skills,
+                     Specialty specialty,
+                     Status status) {
+
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.skills = skills;
         this.specialty = specialty;
+        this.status = status;
     }
 
     public String getFirstName() {
@@ -47,6 +56,14 @@ public class Developer extends BaseEntity{
         this.specialty = specialty;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "Developer{" +
@@ -55,6 +72,7 @@ public class Developer extends BaseEntity{
                 ", lastName='" + lastName + '\'' +
                 ", skills=" + skills +
                 ", specialty=" + specialty +
+                ", status=" + status +
                 '}';
     }
 }
