@@ -54,7 +54,7 @@ public class SkillServiceImplTest {
     }
 
     @Test
-    public void whenSkillWithIdExistThenReturnSkill(){
+    public void whenSkillWithIdExistThenReturnSkill() throws NotFoundException {
         Skill expected = new Skill(1L, "test");
 
         when(repository.getById(1L)).thenReturn(expected);
@@ -75,7 +75,7 @@ public class SkillServiceImplTest {
     }
 
     @Test
-    public void whenUpdateSkillThenReturnSkillWithNewNameAndSameId() {
+    public void whenUpdateSkillThenReturnSkillWithNewNameAndSameId() throws AlreadyExistException {
         Skill skill = new Skill(1L,"updated");
         Skill expected = new Skill(1L, "updated");
         when(repository.update(skill)).thenReturn(skill);
