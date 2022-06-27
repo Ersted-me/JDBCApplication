@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - include:
+      file: src/main/resources/db/changelog/changeset/create-skill-table.sql
+  - include:
+      file: src/main/resources/db/changelog/changeset/create-specialty-table.sql
+  - include:
+      file: src/main/resources/db/changelog/changeset/create-developer-table.sql
+  - include:
+      file: src/main/resources/db/changelog/changeset/create-developers-skills-link-table.sql
